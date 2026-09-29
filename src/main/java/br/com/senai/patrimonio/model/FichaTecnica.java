@@ -8,7 +8,6 @@ public class FichaTecnica {
     private String observacoes;
     private Bem bem;
 
-
     public FichaTecnica() {
     }
 

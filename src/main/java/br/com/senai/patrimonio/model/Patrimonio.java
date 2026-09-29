@@ -5,7 +5,7 @@ import br.com.senai.patrimonio.model.enums.EstadoConservacao;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class Patrimonio {
+public class Patrimonio implements BuscarConservacao {
     private Long id;
     private Bem bem;
     private Sala sala;
@@ -18,19 +18,29 @@ public class Patrimonio {
     public Patrimonio() {
     }
 
-/*Alocar este patrimonio em uma sala e garante que ele sai
-da responsabilidade de um funcionario
-
- */
-    public void alocarEmSala(Sala sala){
-        this.sala= sala;
-        this.funcionario=null;
+    /*Alocar este patrimônio em uma sala e garante que ele sai da responsabilidade
+    de um funcionário
+     */
+    public void alocarEmSala(Sala sala) {
+        this.sala = sala;
+        this.funcionario = null;
     }
 
-    /*Aloca este patrimonio sob responsabilidade de um funcionario*/
-    public void alocarParaFuncionario(Funcionario funcionario){
-        this.funcionario=funcionario;
-        this.sala=null;
+    /*Aloca este patrimônio sob responsabilidade de um funcionário*/
+    public void alocarParaFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
+        this.sala = null;
+    }
+
+    /*Retorna true se possuir uma sala ou um funcionário vinculado
+    ao patrimônio
+     */
+    public boolean possuiLocalizacaoValida() {
+        return (sala != null) || (funcionario != null);
+    }
+
+    public Localizavel getLocalizacaoAtual() {
+        return this.sala != null ? sala : funcionario;
     }
 
     public Long getId() {
@@ -96,4 +106,15 @@ da responsabilidade de um funcionario
     public void setValor(BigDecimal valor) {
         this.valor = valor;
     }
+
+
+
+    @Override
+    public String validarEstadoConservacao() {
+        return this.estado !=null ? this.estado.toString() : "SEM ESTADO DE CONSERVAÇÃO";
+    }
 }
+
+
+
+

@@ -1,10 +1,10 @@
 package br.com.senai.patrimonio;
 
-import br.com.senai.patrimonio.model.Empresa;
-import br.com.senai.patrimonio.model.Endereco;
-import br.com.senai.patrimonio.model.Funcionario;
-import br.com.senai.patrimonio.model.Sala;
+import br.com.senai.patrimonio.avaliacao.Participante;
+import br.com.senai.patrimonio.avaliacao.enums.Nivel;
+import br.com.senai.patrimonio.model.*;
 import br.com.senai.patrimonio.model.enums.Cargo;
+import br.com.senai.patrimonio.model.enums.EstadoConservacao;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -29,17 +29,39 @@ public class PatrimonioApplication {
 
 		Endereco enderecoComArgumentos = new Endereco("Líbano jose gomes",
 				"489", "Perto do posto de saúde",
-				"Santa luzia","Criciúma", "SC");
+				"Santa luzia", "Criciúma", "SC");
 		System.out.println(enderecoComArgumentos.getBairro());
 
 		Sala sala = new Sala();
 
 		Funcionario funcionario = new Funcionario(
-				35L,"Mariazinha","13456789",
+				35L, "Mariazinha", "13456789",
 				Cargo.GERENTE, empresa, sala
 		);
 
 		System.out.println(funcionario.getCpf());
+
+		Participante participante = new Participante(
+				"João", "joao@gmail.com", "04898745236",
+				"45678", Nivel.INICIANTE
+		);
+
+		Empresa empresaIterface = new Empresa();
+		Bloco blocoInterface = new Bloco(1L, "Bloco 2", empresaIterface);
+		Sala salaInterface = new Sala(2L, "Sala 28", "46789",
+				blocoInterface, empresaIterface);
+
+		System.out.println(salaInterface.getDescricaoLocalizavel());
+
+		Patrimonio patrimonio= new Patrimonio();
+
+		System.out.println(patrimonio.validarEstadoConservacao());
+
+		patrimonio.setEstado(EstadoConservacao.REGULAR);
+		System.out.println(patrimonio.validarEstadoConservacao());
+
+		Bem bem=new Bem();
+		System.out.println(bem.getEmpresaVinculada());
 
 
 	}
