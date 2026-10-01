@@ -85,6 +85,7 @@ public class PatrimonioApplication {
 		Funcionario funcionario1=new Funcionario();
 		System.out.println(funcionario1.getEmpresaVinculada());
 		Empresa empresa3=new Empresa();
+		funcionario1.setEmpresa(empresa3);
 		System.out.println(funcionario1.getEmpresaVinculada());
 		empresa3.setNome("BISTEK");
 		funcionario1.setEmpresa(empresa3);
@@ -95,6 +96,7 @@ public class PatrimonioApplication {
 		Sala sala1=new Sala();
 		System.out.println(sala1.getEmpresaVinculada());
 		Empresa empresa4=new Empresa();
+		sala1.setEmpresa(empresa4);
 		System.out.println(sala1.getEmpresaVinculada());
 		empresa4.setNome("UNESC");
 		sala1.setEmpresa(empresa4);
