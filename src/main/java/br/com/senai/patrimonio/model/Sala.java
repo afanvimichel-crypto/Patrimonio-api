@@ -66,6 +66,6 @@ public class Sala implements Localizavel,BuscarEmpresaVinculada {
 
     @Override
     public String getEmpresaVinculada() {
-        return this.empresa!= null ? this.empresa.getNome() : "Empresa não informada";
+        return this.empresa!= null ? "Empresa: "+empresa.getNome() : "Empresa não informada";
     }
 }

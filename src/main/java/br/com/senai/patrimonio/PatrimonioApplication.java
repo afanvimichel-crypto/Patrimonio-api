@@ -60,8 +60,59 @@ public class PatrimonioApplication {
 		patrimonio.setEstado(EstadoConservacao.REGULAR);
 		System.out.println(patrimonio.validarEstadoConservacao());
 
+		System.out.println("***************TESTE BEM*********");
 		Bem bem=new Bem();
 		System.out.println(bem.getEmpresaVinculada());
+		Empresa empresa1= new Empresa();
+		bem.setEmpresa(empresa1);
+		System.out.println(bem.getEmpresaVinculada());
+
+		empresa1.setNome("SENAI");
+		System.out.println(bem.getEmpresaVinculada());
+
+		System.out.println("************TESTE DE BLOCO*****************");
+
+		Bloco bloco=new Bloco();
+		System.out.println(bloco.getEmpresaVinculada());
+		Empresa empresa2=new Empresa();
+		bloco.setEmpresa(empresa2);
+		System.out.println(bloco.getEmpresaVinculada());
+		empresa2.setNome("ALUMASA");
+		System.out.println(bloco.getEmpresaVinculada());
+
+		System.out.println("*********TESTE DE FUNCIONARIO*******************");
+
+		Funcionario funcionario1=new Funcionario();
+		System.out.println(funcionario1.getEmpresaVinculada());
+		Empresa empresa3=new Empresa();
+		System.out.println(funcionario1.getEmpresaVinculada());
+		empresa3.setNome("BISTEK");
+		funcionario1.setEmpresa(empresa3);
+		System.out.println(funcionario1.getEmpresaVinculada());
+
+		System.out.println("******TESTE DA SALA*****************");
+
+		Sala sala1=new Sala();
+		System.out.println(sala1.getEmpresaVinculada());
+		Empresa empresa4=new Empresa();
+		System.out.println(sala1.getEmpresaVinculada());
+		empresa4.setNome("UNESC");
+		sala1.setEmpresa(empresa4);
+		System.out.println(sala1.getEmpresaVinculada());
+
+		System.out.println("*******//////////////////******************");
+
+		Pessoa pessoa=new Pessoa();
+		pessoa.setNome("Elianazinha");
+		pessoa.setCpf("45258458687");
+		System.out.println(pessoa.getIdentificacao());
+		System.out.println("************************");
+		funcionario1.setNome("Mikelvski");
+		funcionario1.setCpf("1312141525");
+		funcionario1.setCargo(Cargo.DIRETOR);
+		System.out.println(funcionario1.getIdentificacao());
+
+
 
 
 	}
