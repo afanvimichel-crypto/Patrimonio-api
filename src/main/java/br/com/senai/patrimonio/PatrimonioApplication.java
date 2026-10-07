@@ -1,15 +1,15 @@
 package br.com.senai.patrimonio;
 
-import br.com.senai.patrimonio.atividades.Computador;
-import br.com.senai.patrimonio.atividades.Equipamento;
-import br.com.senai.patrimonio.atividades.Veiculo;
+import br.com.senai.patrimonio.atividades.*;
 import br.com.senai.patrimonio.avaliacao.Participante;
 import br.com.senai.patrimonio.avaliacao.enums.Nivel;
 import br.com.senai.patrimonio.model.*;
+import br.com.senai.patrimonio.model.Funcionario;
 import br.com.senai.patrimonio.model.enums.Cargo;
 import br.com.senai.patrimonio.model.enums.EstadoConservacao;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 
 @SpringBootApplication
 public class PatrimonioApplication {
@@ -85,7 +85,7 @@ public class PatrimonioApplication {
 
 		System.out.println("*********TESTE DE FUNCIONARIO*******************");
 
-		Funcionario funcionario1=new Funcionario();
+		Funcionario funcionario1=new Funcionario("Kossi", 50000.0);
 		System.out.println(funcionario1.getEmpresaVinculada());
 		Empresa empresa3=new Empresa();
 		funcionario1.setEmpresa(empresa3);
@@ -126,7 +126,16 @@ public class PatrimonioApplication {
 		exibirRelatorio(computador);
 		exibirRelatorio(veiculo);
 
+		br.com.senai.patrimonio.atividades.Funcionario funcionario2=
+				new br.com.senai.patrimonio.atividades.Funcionario("Kossi",50000.00);
+		br.com.senai.patrimonio.atividades.Funcionario gerente=
+				new Gerente("Eliana",75000.00);
+		br.com.senai.patrimonio.atividades.Funcionario desenvolvedor=
+				new Desenvolvedor("Mathea",30000.00);
 
+		imprimirContraCheque(funcionario2);
+		imprimirContraCheque(gerente);
+		imprimirContraCheque(desenvolvedor);
 	}
 public static void exibirRelatorio(Equipamento item){
 	System.out.println("Item: " + item.getNome());
@@ -136,10 +145,21 @@ public static void exibirRelatorio(Equipamento item){
 
 
 
-
-
-
 }
+	// Método auxiliar que demonstra o polimorfismo
+	public static void imprimirContraCheque(br.com.senai.patrimonio.atividades.Funcionario f) {
+		System.out.println("Funcionário: " + f.getNome());
+		System.out.println("Salário Base: R$ " + f.getSalarioBase());
+		System.out.println("Bonifiçao: R$ " + f.calcularBonificacao());
+		System.out.println("Total: R$ "+(f.getSalarioBase()+ f.calcularBonificacao()));
+
+		// TODO 3: Imprimir a bonificação chamando f.calcularBonificacao()
+
+		// TODO 4: Imprimir o Salário Total (Salário Base + Bonificação)
+
+		System.out.println("---------------_________----------------");
+	}
 }
+
 
 

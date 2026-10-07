@@ -17,6 +17,6 @@ public class Funcionario {
         return salarioBase;
     }
     public double calcularBonificacao(){
-        return salarioBase*0.05;
+        return this.salarioBase*0.05;
     }
 }

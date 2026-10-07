@@ -7,7 +7,7 @@ public class Funcionario extends Pessoa implements Localizavel,BuscarEmpresaVinc
     private Empresa empresa;
     private Sala salasResponsavel;
 
-    public Funcionario(){}
+    public Funcionario(String kossi, double v){}
 
     public Funcionario(Cargo cargo, Empresa empresa, Sala salasResponsavel) {
         this.cargo = cargo;
